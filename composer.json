@@ -1,0 +1,20 @@
+{
+    "name": "ckoo/youzan-sdk",
+    "description": "youzan sdk",
+    "minimum-stability": "stable",
+    "version": "0.1.0",
+    "license": "",
+    "authors": [
+        {
+            "name": "imhui",
+            "email": "seasonlyh@gmail.com"
+        }
+    ],
+    "autoload": {
+        "psr-4": { "Youzan\\": "src/Youzan" }
+    },
+    "require": {
+        "symfony/filesystem": "~2.8.0",
+        "netresearch/jsonmapper": "0.10.*"
+    }
+}
