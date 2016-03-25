@@ -81,7 +81,7 @@ $youzan->goods(); // 获取商品操作类 GoodsService
 $youzan->trade(); // 获取订单操作类 TradeService
 $youzan->itemcategory(); // 获取商品类目操作类 ItemcategoryService
 $youzan->logistics(); // 获取物流操作类 ItemcategoryService
-$youzan->shop(); // 获取物流操作类 ShopService
+$youzan->shop(); // 获取店铺操作类 ShopService
 ```
 
 ##### 操作商品
