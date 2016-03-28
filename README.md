@@ -124,3 +124,13 @@ use Youzan\Model\TradeStatus
 $service = $youzan->trade();
 list($result, $total) = $service->tradesSoldGet(TradeStatus::WAIT_BUYER_CONFIRM_GOODS);
 ```
+
+##### 操作订单
+```
+/**
+ * 上一次API请求的错误信息
+ */
+ 
+$error = $service->getLastError();
+```
+

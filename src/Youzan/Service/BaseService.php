@@ -97,7 +97,14 @@ abstract class BaseService
     protected function removeFiles($filePaths = array())
     {
         $fileSystem = new Filesystem();
-        $fileSystem->remove($filePaths);
+
+        $files = array();
+        foreach ($filePaths as $filePath) {
+            if (StringUtility::hasPrefix($this->cacheDir, $filePath)) {
+                $files[] = $filePath;
+            }
+        }
+        $fileSystem->remove($files);
     }
 
     /**
