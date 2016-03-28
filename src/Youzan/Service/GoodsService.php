@@ -166,7 +166,6 @@ class GoodsService extends BaseService
 
         $params = array(
             'num_iid' => $num_iid,
-            'cid' => $parameters->cid,
             'tag_ids' => $parameters->tag_ids,
             'price' => $parameters->price,
             'title' => $parameters->title,
@@ -183,6 +182,9 @@ class GoodsService extends BaseService
             'auto_listing_time' => $parameters->auto_listing_time,
             'join_level_discount' => $parameters->join_level_discount
         );
+        if ($parameters->cid) {
+            $parameters['cid'] = $parameters->cid;
+        }
         if ($parameters->promotion_cid) {
             $params['promotion_cid'] = $parameters->promotion_cid;
         }

@@ -26,15 +26,19 @@ class KdtApiClient
 
     public function get($method, $params = array())
     {
+        list($response, $error) = SimpleHttpClient::get(self::$apiEntry, $this->buildRequestParams($method, $params));
         return $this->parseResponse(
-            SimpleHttpClient::get(self::$apiEntry, $this->buildRequestParams($method, $params))
+            $response,
+            $error
         );
     }
 
     public function post($method, $params = array(), $files = array())
     {
+        list($response, $error) = SimpleHttpClient::post(self::$apiEntry, $this->buildRequestParams($method, $params), $files);
         return $this->parseResponse(
-            SimpleHttpClient::post(self::$apiEntry, $this->buildRequestParams($method, $params), $files)
+            $response,
+            $error
         );
     }
 
@@ -60,10 +64,15 @@ class KdtApiClient
     }
 
 
-    private function parseResponse($responseData)
+    private function parseResponse($responseData, $error = null)
     {
+        if ($error) {
+            throw new \Exception($error['error'], $error['errno']);
+        }
         $data = json_decode($responseData, true);
-        if (null === $data) throw new \Exception('response invalid, data: ' . $responseData);
+        if (null === $data) {
+            throw new \Exception('response invalid, data: ' . $responseData);
+        }
         return $data;
     }
 

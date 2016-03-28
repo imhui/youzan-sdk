@@ -40,7 +40,7 @@ class SimpleHttpClient
         curl_setopt($ci, CURLOPT_HTTP_VERSION, CURL_HTTP_VERSION_1_0);
         curl_setopt($ci, CURLOPT_USERAGENT, 'KdtApiSdk Client v0.1');
         curl_setopt($ci, CURLOPT_CONNECTTIMEOUT, 30);
-        curl_setopt($ci, CURLOPT_TIMEOUT, 30);
+        curl_setopt($ci, CURLOPT_TIMEOUT, 60);
         curl_setopt($ci, CURLOPT_RETURNTRANSFER, TRUE);
         curl_setopt($ci, CURLOPT_ENCODING, "");
         curl_setopt($ci, CURLOPT_SSL_VERIFYPEER, false);
@@ -63,11 +63,24 @@ class SimpleHttpClient
         curl_setopt($ci, CURLINFO_HEADER_OUT, TRUE);
 
         $response = curl_exec($ci);
+        $error = null;
+        if ($response === false) {
+            $error = curl_error($ci);
+            $errno = curl_errno($ci);
+            $error = ['error' => $error, 'errno' => $errno];
+        }
         $httpCode = curl_getinfo($ci, CURLINFO_HTTP_CODE);
         $httpInfo = curl_getinfo($ci);
 
         curl_close($ci);
-        return $response;
+
+        return array(
+            $response,
+            $error,
+            $httpCode,
+            $httpInfo,
+        );
+//        return $response;
     }
 
     private static function build_http_query_multi($params, $files)

@@ -83,3 +83,4 @@ $parameters->tag_ids = '85416261,85416375';
 $goodsService = $youzan->goods();
 $items = $goodsService->itemAdd($parameters);
 var_dump($items);
+var_dump($goodsService->getLastError());

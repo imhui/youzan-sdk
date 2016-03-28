@@ -15,3 +15,4 @@ $service = $youzan->goods();
 list($items, $total) = $service->itemsOnsaleGet();
 var_dump($total);
 var_dump($items);
+var_dump($service->getLastError());
