@@ -183,7 +183,7 @@ class GoodsService extends BaseService
             'join_level_discount' => $parameters->join_level_discount
         );
         if ($parameters->cid) {
-            $parameters['cid'] = $parameters->cid;
+            $params['cid'] = $parameters->cid;
         }
         if ($parameters->promotion_cid) {
             $params['promotion_cid'] = $parameters->promotion_cid;
