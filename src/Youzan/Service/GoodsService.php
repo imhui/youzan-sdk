@@ -86,6 +86,26 @@ class GoodsService extends BaseService
         return array($list, $total);
     }
 
+    /**
+     * @param $outer_id
+     * @return array|null
+     */
+    public function itemsCustomGet($outer_id)
+    {
+        $method = 'kdt.items.custom.get';
+        $params = array(
+            'outer_id' => $outer_id,
+        );
+
+        $response = $this->get($method, $params);
+        if ($this->isResponseError($response)) {
+            return null;
+        }
+
+        $list = ModelFactory::objectListFromData($response['response']['items'], GoodsDetail::class);
+        return $list;
+    }
+
 
     /**
      * @param $num_iid int
