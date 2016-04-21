@@ -283,7 +283,7 @@ class GoodsService extends BaseService
             return null;
         }
 
-        return ModelFactory::objectFromData(['response']['item'], GoodsDetail::class);
+        return ModelFactory::objectFromData($response['response']['item'], GoodsDetail::class);
 
     }
 
