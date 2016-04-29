@@ -81,3 +81,6 @@ $parameters->keep_item_img_ids = null;
 $goodsService = $youzan->goods();
 $items = $goodsService->itemUpdate(234750256, $parameters);
 var_dump($items);
+if ($items == false) {
+    print_r($goodsService->getLastError()->getMessage());
+}

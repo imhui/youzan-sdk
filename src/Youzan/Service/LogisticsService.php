@@ -16,26 +16,35 @@ class LogisticsService extends BaseService
 {
     /**
      * @param $tid
-     * @param $outerId|null
+     * @param $outer_tid|null
      * @param $oids|null
      * @param $is_no_express
      * @param $out_stype
      * @param $out_sid
      * @return bool
      */
-    public function onlineConfirm($tid, $outerId, $oids, $is_no_express, $out_stype, $out_sid)
+    public function onlineConfirm($tid, $is_no_express, $outer_tid = null, $oids = null, $out_stype = null, $out_sid = null)
     {
         $method = 'kdt.logistics.online.confirm';
         $params = array(
             'tid' => $tid,
-            'outer_tid' => $outerId,
-            'oids' => $oids,
             'is_no_express' => $is_no_express,
-            'out_stype' => $out_stype,
-            'out_sid' => $out_sid
         );
+        if ($outer_tid !== null) {
+            $params['outer_tid'] = $outer_tid;
+        }
+        if ($out_stype !== null) {
+            $params['out_stype'] = $out_stype;
+        }
+        if ($out_sid !== null) {
+            $params['out_sid'] = $out_sid;
+        }
+        if ($oids !== null) {
+            $params['oids'] = $oids;
+        }
 
         $response = $this->post($method, $params);
+        var_dump($response);exit;
         if ($this->isResponseError($response)) {
             return false;
         }

@@ -25,7 +25,6 @@ Nike Air Max Tavas SE 男子运动鞋鞋跟搭载 Max Air 气垫，结合可驾�
 $parameters->images = array(
     'https://img.alicdn.com/bao/uploaded/i3/TB1NzqEKVXXXXaRXVXXXXXXXXXX_!!0-item_pic.jpg_430x430q90.jpg',
     'https://img.alicdn.com/bao/uploaded/i7/TB1FwtzLXXXXXbIXFXXkHr9.FXX_110253.jpg_430x430q90.jpg',
-    '/Users/imhui/Desktop/145917506720662377.jpg'
 );
 
 $skus = array(
