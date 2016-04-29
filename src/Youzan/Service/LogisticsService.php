@@ -44,7 +44,6 @@ class LogisticsService extends BaseService
         }
 
         $response = $this->post($method, $params);
-        var_dump($response);exit;
         if ($this->isResponseError($response)) {
             return false;
         }
