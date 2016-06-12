@@ -47,4 +47,13 @@ class GoodsParamters
      */
     public $keep_item_img_ids = null;
 
+    static public function allKeys()
+    {
+        return [
+            'cid', 'promotion_cid', 'tag_ids', 'price', 'title', 'desc', 'is_virtual', 'post_fee',
+            'skus_with_json', 'origin_price', 'buy_url', 'outer_id', 'buy_quota', 'quantity', 'hide_quantity',
+            'fields', 'is_display', 'auto_listing_time', 'join_level_discount'
+        ];
+    }
+
 }

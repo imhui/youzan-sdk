@@ -135,26 +135,12 @@ class GoodsService extends BaseService
     {
         $method = 'kdt.item.add';
 
-        $params = array(
-            'cid' => $parameters->cid,
-            'promotion_cid' => $parameters->promotion_cid,
-            'tag_ids' => $parameters->tag_ids,
-            'price' => $parameters->price,
-            'title' => $parameters->title,
-            'desc' => $parameters->desc,
-            'is_virtual' => $parameters->is_virtual,
-            'post_fee' => $parameters->post_fee,
-            'skus_with_json' => $parameters->skus_with_json,
-            'origin_price' => $parameters->origin_price,
-            'buy_url' => $parameters->buy_url,
-            'outer_id' => $parameters->outer_id,
-            'buy_quota' => $parameters->buy_quota,
-            'quantity' => $parameters->quantity,
-            'hide_quantity' => $parameters->hide_quantity,
-            'is_display' => $parameters->is_display,
-            'auto_listing_time' => $parameters->auto_listing_time,
-            'join_level_discount' => $parameters->join_level_discount,
-        );
+        $params = array();
+        foreach (GoodsParamters::allKeys() as $key) {
+            if (!is_null($parameters->$key)) {
+                $params[$key] = $parameters->$key;
+            }
+        }
 
         $filenames = $this->saveRemoteImages($parameters->images);
 
