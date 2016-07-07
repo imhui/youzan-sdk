@@ -21,4 +21,18 @@ class AccountDetail
     public $words;
     public $avatar;
     public $user_id;
+    public $weixin_openid;
+    public $weixin;
+    public $sex;
+    public $tags;
+    public $union_id;
+    public $is_follow;
+    public $points;
+    public $traded_num;
+    public $traded_money;
+    public $level_info;
+    public $nick;
+    public $follow_time;
+    public $province;
+    public $city;
 }
