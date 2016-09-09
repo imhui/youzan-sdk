@@ -3,8 +3,8 @@
 /**
  * Created by PhpStorm.
  * User: imhui
- * Date: 16/3/7
- * Time: 12:24
+ * Date: 16/7/7
+ * Time: 15:41
  */
 
 namespace Youzan;
@@ -16,6 +16,7 @@ use Youzan\Service\GoodsService;
 use Youzan\Service\LogisticsService;
 use Youzan\Service\ShopService;
 use Youzan\Service\TradeService;
+use Youzan\Service\UserService;
 
 class Youzan
 {
@@ -58,6 +59,11 @@ class Youzan
      */
     private $shopService = null;
 
+    /**
+     * @var UserService
+     */
+    private $userService = null;
+    
     /**
      * Youzan constructor.
      * @param $appId
@@ -128,4 +134,15 @@ class Youzan
         return $this->shopService;
     }
 
+    /**
+     * @return UserService
+     */
+    public function user()
+    {
+        if (!$this->userService) {
+            $this->userService = new UserService($this->apiClient, $this->cacheDir);
+        }
+        return $this->userService;
+    }
+    
 }
